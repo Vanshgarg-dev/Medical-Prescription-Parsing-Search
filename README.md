@@ -1,4 +1,4 @@
-# MedSnap — Medical Prescription Parsing & Search
+# Medical Prescription Parsing & Search
 
 Automated system to upload, extract, parse, and search medical prescriptions.
 

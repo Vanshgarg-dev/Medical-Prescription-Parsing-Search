@@ -227,13 +227,13 @@ def get_db_schema() -> str:
 # ---------------------------------------------------------------------------
 
 with gr.Blocks(
-    title="MedSnap — Prescription Parser",
+    title="Medical Prescription Parsing & Search",
     theme=gr.themes.Soft(primary_hue="blue", secondary_hue="indigo"),
 ) as app:
 
     gr.Markdown(
         """
-        # 🏥 MedSnap — Prescription Parsing Pipeline
+        # 🏥 Medical Prescription Parsing & Search
         Upload prescription images or PDFs → OCR → AI extraction → Structured database storage → Intelligent search
         """
     )
