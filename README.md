@@ -55,30 +55,11 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Web UI
-
 ```bash
 python app.py
 ```
 
 Runs on `http://localhost:7860`.
-
-### CLI
-
-```bash
-python main.py upload /path/to/prescription.pdf
-
-python main.py search "patients prescribed metformin last month"
-python main.py similar "diabetes medication with insulin"
-python main.py drug "amoxicillin"
-python main.py patient "John Doe"
-python main.py diagnosis "diabetes"
-python main.py fulltext "hypertension treatment"
-python main.py get 1
-python main.py schema
-```
-
-The upload command stores the file, runs OCR + LLM extraction, saves everything to Postgres, and the DB triggers handle summary/embedding generation.
 
 ## Stack
 
