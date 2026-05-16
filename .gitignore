@@ -1,0 +1,33 @@
+# Virtual environment
+venv/
+
+# Environment variables / secrets
+.env
+
+# Firebase service account key
+medsnap-fa4fc-firebase-adminsdk-8vpgi-c52ca31a19.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# PaddleOCR / model caches
+.paddleocr/
+inference/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+test_images/
+test_prescription.pdf

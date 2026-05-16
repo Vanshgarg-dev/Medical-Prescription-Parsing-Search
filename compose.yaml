@@ -1,0 +1,30 @@
+name: pgai
+services:
+  db:
+    image: timescale/timescaledb-ha:pg17
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      OPENROUTER_EMBED_MODEL: ${OPENROUTER_EMBED_MODEL}
+      OPENROUTER_COMPLETE_MODEL: ${OPENROUTER_COMPLETE_MODEL}
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/home/postgres/pgdata/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  vectorizer-worker:
+    image: timescale/pgai-vectorizer-worker:latest
+    environment:
+      PGAI_VECTORIZER_WORKER_DB_URL: postgres://postgres:${POSTGRES_PASSWORD}@db:5432/postgres
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+    command: ["--poll-interval", "5s"]
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  data:
