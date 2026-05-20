@@ -31,8 +31,30 @@ services/
   database_service.py
 ```
 
+
 ## Setup
 
+### Getting API Keys
+
+**Groq**
+1. Go to [console.groq.com](https://console.groq.com)
+2. Sign up / log in → API Keys → Create API Key
+3. Copy the key into `GROQ_API_KEY`
+
+**OpenRouter**
+1. Go to [openrouter.ai](https://openrouter.ai)
+2. Sign up / log in → Keys → Create Key
+3. Copy the key into `OPENROUTER_API_KEY`
+4. The free models (`nvidia/llama-nemotron-embed-vl-1b-v2:free`, `google/gemma-4-31b-it:free`) work without adding credits
+
+**Supabase**
+1. Go to [supabase.com](https://supabase.com) → New project
+2. Settings → API → copy `Project URL` into `SUPABASE_URL`
+3. Copy the `anon/public` key into `SUPABASE_KEY`
+4. Storage → New bucket → name it `prescriptions` (or match `SUPABASE_BUCKET`)
+
+**PostgreSQL**
+No external account needed — the database runs locally via Docker. Just set a `POSTGRES_PASSWORD` of your choice in `.env` and it matches `compose.yaml` automatically.
 ```bash
 cp .env.example .env
 ```
@@ -60,6 +82,14 @@ python app.py
 ```
 
 Runs on `http://localhost:7860`.
+
+
+## Outputs
+
+![Upload & Process](image.png)
+![Search Prescriptions](image1.png)
+
+
 
 ## Stack
 

@@ -37,31 +37,31 @@ TOOLS = [
                 "type": "object",
                 "properties": {
                     "patient_name": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "description": "Full name of the patient",
                     },
                     "patient_age": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "description": "Age of the patient (e.g. '45 years')",
                     },
                     "patient_gender": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "description": "Gender of the patient",
                     },
                     "doctor_name": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "description": "Name of the prescribing doctor",
                     },
                     "doctor_speciality": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "description": "Speciality/department of the doctor",
                     },
                     "hospital_clinic": {
-                        "type": "string",
+                        "type": ["string", "null"],
                         "description": "Hospital or clinic name",
                     },
                     "diagnosis": {
-                        "type": "array",
+                        "type": ["array", "null"],
                         "items": {"type": "string"},
                         "description": "List of diagnoses mentioned",
                     },
@@ -206,7 +206,11 @@ def semantic_search_query(user_query: str) -> str:
 ## Instructions
 Given a natural language query, produce a SQL query that searches across the prescriptions,
 medical_entities, and medications tables.
-Return ONLY the full SQL SELECT query, nothing else. Use ILIKE for text matching.
+Return ONLY the full SQL SELECT query, nothing else.
+- Use ILIKE for plain text columns (e.g. patient_name, drug_name, doctor_name).
+- For array columns (diagnosis, symptoms — type _text), use:
+  EXISTS (SELECT 1 FROM unnest(me.diagnosis) d WHERE d ILIKE '%value%')
+  Never apply ILIKE directly to an array column.
 Always join the tables properly using foreign keys.
 Limit results to 20 rows.""",
         },
