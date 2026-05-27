@@ -100,4 +100,4 @@ Runs on `http://localhost:7860`.
 - **Supabase** — file storage
 - **Gradio** — web frontend
 
-###In collaboration with Superteams.ai'
+### In collaboration with [Superteams.ai](https://www.superteams.ai/)
