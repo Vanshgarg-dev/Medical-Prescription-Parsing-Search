@@ -99,3 +99,5 @@ Runs on `http://localhost:7860`.
 - **PaddleOCR** — OCR for scanned documents and images
 - **Supabase** — file storage
 - **Gradio** — web frontend
+
+###In collaboration with Superteams.ai'
